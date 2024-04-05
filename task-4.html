@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Authentication </title>
+  <link rel="stylesheet" href="task-4.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <input type="text" id="loginUsername" placeholder="Username" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="register.html">Register here</a></p>
+  </div>
+
+  <a href="file:///G:/Internship/Oasis%20InfoByte%20(15-02-24%20to%2015-03-24)/Project/index.html" class="styled-button">Back</button>
+    
+  <script>
+    let users = {};
+
+function registerUser(username, password) {
+  users[username] = password;
+}
+
+function loginUser(username, password) {
+  return users.hasOwnProperty(username) && users[username] === password;
+}
+
+document.getElementById("registerForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  let username = document.getElementById("registerUsername").value;
+  let password = document.getElementById("registerPassword").value;
+  registerUser(username, password);
+  alert("Registration successful!");
+  window.location.href = "task-4.html";
+});
+
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  let username = document.getElementById("loginUsername").value;
+  let password = document.getElementById("loginPassword").value;
+  if (loginUser(username, password)) {
+    alert("Login successful!");
+    window.location.href = "secured.html";
+  } else {
+    alert("Invalid username or password. Please try again.");
+  }
+});
+  </script>
+</body>
+</html>
